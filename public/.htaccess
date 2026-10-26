@@ -1,0 +1,44 @@
+# Kalcos Zapatería: reglas para LiteSpeed/Apache (cPanel)
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+
+RewriteEngine On
+
+# 1. Siempre HTTPS (requiere certificado SSL activo: cPanel > SSL/TLS Status > AutoSSL)
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. www.kalcos.com.mx → kalcos.com.mx (una sola URL canónica)
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+# 3. Quitar la diagonal final: /privacidad/ → /privacidad
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [L,R=301]
+
+# 4. URLs limpias: /privacidad sirve privacidad.html (prerenderizado)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+# 5. Lo que no existe responde 404 real (con la página prerenderizada)
+ErrorDocument 404 /404.html
+
+# Caché: los assets de Vite llevan hash en el nombre y pueden guardarse un año
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2?|svg|png|jpe?g|webp|avif)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>

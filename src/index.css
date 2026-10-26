@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  /* Evita que el header fijo (con o sin banner de maqueta) tape los títulos al saltar a una sección */
+  scroll-padding-top: 7rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #b8420f;
+  outline-offset: 3px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  /* Los elementos que entran de lado al hacer scroll no deben generar scroll horizontal */
+  overflow-x: clip;
+}
