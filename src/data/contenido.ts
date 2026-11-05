@@ -1,7 +1,7 @@
 // Textos de la interfaz. Los datos de la empresa (teléfonos, direcciones,
 // correos, razón social) viven en empresa.ts, no aquí.
 
-import fotoTienda from '../assets/fotos/tienda-kalcos.webp'
+import fotoTienda from '../assets/fotos/tienda-kalcos-3.webp'
 import fotoDama from '../assets/fotos/dama.webp'
 import fotoCaballero from '../assets/fotos/caballero.webp'
 import fotoEscolar from '../assets/fotos/escolar.webp'
