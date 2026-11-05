@@ -37,7 +37,7 @@ export function schemaOrganizacion() {
     '@id': `${empresa.sitioUrl}/#sucursal-${s.id}`,
     name: `${empresa.nombreComercial} ${s.nombre}`,
     parentOrganization: { '@id': idOrg },
-    telephone: telefonoIntl(s.telefono),
+    ...(s.telefono && { telephone: telefonoIntl(s.telefono) }),
     url: `${empresa.sitioUrl}/#sucursales`,
     address: {
       '@type': 'PostalAddress',

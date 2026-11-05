@@ -24,12 +24,21 @@ export default function SucursalCard({ sucursal, textos }: SucursalCardProps) {
         </li>
         <li className="flex gap-3">
           <Phone className="mt-0.5 h-5 w-5 shrink-0 text-accent-dark" aria-hidden="true" />
-          <span>{sucursal.telefono}</span>
+          <span>
+            <Dato valor={sucursal.telefono} campo="teléfono" />
+          </span>
         </li>
         <li className="flex gap-3">
           <Clock className="mt-0.5 h-5 w-5 shrink-0 text-accent-dark" aria-hidden="true" />
           <span>
-            <Dato valor={sucursal.horario} campo="horario" />
+            {/* En empresa.ts los tramos van separados por ' · '; aquí cada tramo va en su renglón */}
+            <Dato valor={sucursal.horario} campo="horario">
+              {sucursal.horario?.split(' · ').map((tramo) => (
+                <span key={tramo} className="block">
+                  {tramo}
+                </span>
+              ))}
+            </Dato>
           </span>
         </li>
       </ul>
@@ -44,11 +53,13 @@ export default function SucursalCard({ sucursal, textos }: SucursalCardProps) {
           {textos.comoLlegar}
           <span className="sr-only"> a la sucursal {sucursal.nombre} (abre Google Maps)</span>
         </a>
-        <a href={telHref(sucursal.telefono)} className={`${accionClass} border border-base-700 text-ink hover:border-accent`}>
-          <Phone className="h-4 w-4" aria-hidden="true" />
-          {textos.llamar}
-          <span className="sr-only"> a la sucursal {sucursal.nombre}</span>
-        </a>
+        {sucursal.telefono && (
+          <a href={telHref(sucursal.telefono)} className={`${accionClass} border border-base-700 text-ink hover:border-accent`}>
+            <Phone className="h-4 w-4" aria-hidden="true" />
+            {textos.llamar}
+            <span className="sr-only"> a la sucursal {sucursal.nombre}</span>
+          </a>
+        )}
       </div>
     </article>
   )

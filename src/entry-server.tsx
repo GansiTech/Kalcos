@@ -6,7 +6,7 @@ import { headPara } from './lib/head'
 import { schemaOrganizacion } from './lib/schema'
 
 // Rutas que se generan como HTML estático. '/404' produce 404.html para el ErrorDocument del hosting.
-export const rutas = ['/', '/privacidad', '/terminos', '/404']
+export const rutas = ['/', '/privacidad', '/terminos', '/cookies', '/404']
 
 export function render(url: string) {
   return renderToString(

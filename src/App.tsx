@@ -4,9 +4,11 @@ import { domAnimation, LazyMotion, MotionConfig } from 'framer-motion'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import WhatsAppFlotante from './components/layout/WhatsAppFlotante'
+import CookieBanner from './components/layout/CookieBanner'
 import HomePage from './pages/HomePage'
 import PrivacidadPage from './pages/PrivacidadPage'
 import TerminosPage from './pages/TerminosPage'
+import CookiesPage from './pages/CookiesPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 // Al cambiar de ruta: ir a la sección del hash (p. ej. /#sucursales) o al inicio de la página
@@ -38,6 +40,7 @@ function Layout() {
       <Outlet />
       <Footer />
       <WhatsAppFlotante />
+      <CookieBanner />
     </div>
   )
 }
@@ -53,6 +56,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/privacidad" element={<PrivacidadPage />} />
           <Route path="/terminos" element={<TerminosPage />} />
+          <Route path="/cookies" element={<CookiesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { empresa } from '../../data/empresa'
-import { footer } from '../../data/contenido'
+import { cookiesBanner, footer } from '../../data/contenido'
+import { abrirPreferencias } from '../../lib/consentimiento'
 import { mailHref, telHref } from '../../lib/enlaces'
 import { Dato } from '../ui/Pendiente'
 import Logo from '../ui/Logo'
@@ -16,7 +17,7 @@ export default function Footer() {
     <footer className="bg-ink text-base-900">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
-          <Logo className="text-white" />
+          <Logo />
           <dl className="mt-5 space-y-2 text-sm leading-relaxed">
             <div>
               <dt className="inline font-semibold text-white">Razón social: </dt>
@@ -75,6 +76,16 @@ export default function Footer() {
               <Link to="/terminos" className={linkClass}>
                 Términos y condiciones
               </Link>
+            </li>
+            <li>
+              <Link to="/cookies" className={linkClass}>
+                Política de cookies
+              </Link>
+            </li>
+            <li>
+              <button type="button" onClick={abrirPreferencias} className={`${linkClass} text-left`}>
+                {cookiesBanner.preferencias}
+              </button>
             </li>
           </ul>
         </div>

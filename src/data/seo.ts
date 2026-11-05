@@ -22,6 +22,10 @@ export const seoRutas: Record<string, SeoRuta> = {
     titulo: `Términos y condiciones | ${empresa.nombreComercial}`,
     descripcion: `Términos y condiciones de uso del sitio de ${empresa.nombreComercial}: precios, disponibilidad, cambios y devoluciones.`,
   },
+  '/cookies': {
+    titulo: `Política de cookies | ${empresa.nombreComercial}`,
+    descripcion: `Qué cookies usa el sitio de ${empresa.nombreComercial}, para qué sirven y cómo aceptarlas o rechazarlas.`,
+  },
   '/404': {
     titulo: `Página no encontrada | ${empresa.nombreComercial}`,
     descripcion: 'La página que buscas no existe.',

@@ -36,7 +36,7 @@ Los textos de la interfaz (hero, categorías, títulos) están en `src/data/cont
 
 ## Rutas y por qué cada URL funciona al entrar directo
 
-Rutas: `/`, `/privacidad`, `/terminos` (más una página 404).
+Rutas: `/`, `/privacidad`, `/terminos`, `/cookies` (más una página 404).
 
 Elegí **prerenderizar** (la opción preferida del brief). `npm run build` genera un HTML completo por ruta:
 
@@ -44,6 +44,7 @@ Elegí **prerenderizar** (la opción preferida del brief). `npm run build` gener
 dist/index.html        → https://kalcos.com.mx/
 dist/privacidad.html   → https://kalcos.com.mx/privacidad
 dist/terminos.html     → https://kalcos.com.mx/terminos
+dist/cookies.html      → https://kalcos.com.mx/cookies
 dist/404.html          → cualquier URL que no exista (responde 404 real)
 ```
 
@@ -110,7 +111,7 @@ Para la app de WhatsApp Business / Meta for Developers, usa:
 - Términos del servicio: `https://kalcos.com.mx/terminos`
 - Sitio web del negocio: `https://kalcos.com.mx/`
 
-El aviso no tiene login, ni pop-ups, ni banner de cookies que lo tape (el sitio no usa cookies).
+El aviso no tiene login ni pop-ups. El banner de cookies es una tarjeta pequeña abajo de la pantalla que no bloquea la página: el aviso y el pie se pueden leer sin cerrarlo.
 
 ## SEO y calidad
 
@@ -121,10 +122,12 @@ El aviso no tiene login, ni pop-ups, ni banner de cookies que lo tape (el sitio 
 
 ## Supuestos y decisiones
 
-- **Maqueta:** no encontré `Maqueta_Kalcos.html` en la carpeta del proyecto. Seguí la descripción del brief (fondo papel cálido, tinta casi negra, acento naranja quemado, Archivo + Inter) y la estructura de secciones que pide. Si me pasas la maqueta, ajusto los detalles para que coincida.
+- **Colores:** el brief describía papel cálido y naranja quemado, pero se cambiaron a los del logotipo de Kalcos: blanco, grises neutros, tinta casi negra y rojo `#CF0016` (con texto blanco encima cumple contraste AA). Tipografías Archivo + Inter.
+- **Logo:** mientras no haya archivo del logo (`logo: null`), el sitio lo imita con "kalcos" en blanco sobre una cápsula roja. Con el SVG o PNG oficial sin fondo, se pone en `public/` y se indica en `empresa.ts`.
 - **Sin WhatsApp todavía:** el botón principal del hero llama a la matriz en lugar de quedar muerto, y el botón flotante de WhatsApp aparece solo cuando hay número. Al llenar `whatsapp`, todos los botones abren WhatsApp con un mensaje ya escrito.
 - **Catálogo:** cada categoría tiene "Preguntar por un modelo", que abre WhatsApp con la categoría en el mensaje (o llama, mientras no haya número). "Remate" se marca como destacado y remite a la sucursal Solidaridad Remate (por el nombre de la sucursal y de la página de Facebook).
-- **Sin analítica ni cookies**, así que no hay banner de cookies y el aviso lo dice. Si después se agrega analítica, hay que poner banner de consentimiento y actualizar el apartado 8 del aviso.
+- **Cookies:** hay banner (Aceptar / Rechazar, con el mismo peso visual) y política en `/cookies`. La elección se guarda en `localStorage` (`cookieConsent`) y se puede cambiar desde "Preferencias de cookies" en el pie. **Hoy el sitio no instala ninguna cookie de analítica**, aunque el usuario acepte; la política lo dice. Si se agrega analítica: cargarla solo cuando `analiticaPermitida()` (`src/lib/consentimiento.ts`) sea `true` y listar sus cookies en `cookiesUsadas` (`src/data/contenido.ts`), que alimenta la política automáticamente.
+- **Ruta `/cookies`** en vez de `/cookie-policy` de la guía interna, para seguir el estilo en español de `/privacidad` y `/terminos`.
 - **Páginas legales indexables:** la guía interna dice `noindex` para páginas legales, pero el brief pide SEO ≥ 90 en todas las rutas y conviene que el aviso sea fácil de encontrar, así que se indexan y van en el sitemap.
 - **Aviso de privacidad:** es un texto base conforme a la LFPDPPP (responsable, datos, finalidades primarias y secundarias, asistente automatizado con derecho a atención humana, proveedores tecnológicos descritos de forma genérica, ARCO, revocación, cookies y cambios). **Debe revisarlo el área legal de Kalcos** antes de publicarlo como definitivo, en especial los plazos ARCO y la mención de la autoridad, porque la ley se reformó en 2025.
 - **Años de operación:** se guarda el año de fundación (`anioFundacion`) y los años se calculan solos, para que el dato no se quede viejo.

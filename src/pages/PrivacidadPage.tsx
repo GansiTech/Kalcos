@@ -172,8 +172,12 @@ export default function PrivacidadPage() {
 
       <Apartado titulo="8. Cookies y tecnologías similares">
         <p>
-          Este sitio no utiliza cookies de analítica, publicidad ni rastreo. Solo se cargan los recursos necesarios para
-          mostrar la página, como las tipografías.
+          Este sitio solo usa cookies de analítica si las aceptas en el aviso de cookies, y no usa cookies de publicidad.
+          El detalle de cada cookie y cómo cambiar tu elección está en la{' '}
+          <Link to="/cookies" className={linkClass}>
+            política de cookies
+          </Link>
+          .
         </p>
       </Apartado>
 

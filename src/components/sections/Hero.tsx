@@ -3,7 +3,7 @@ import { sucursales } from '../../data/empresa'
 import { hero } from '../../data/contenido'
 import Boton from '../ui/Boton'
 import CtaWhatsApp from '../ui/CtaWhatsApp'
-import ImagePlaceholder from '../ui/ImagePlaceholder'
+import Foto from '../ui/Foto'
 
 // El hero no usa Reveal: es lo primero que se ve y debe pintarse de inmediato (LCP)
 export default function Hero() {
@@ -30,7 +30,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <ImagePlaceholder label={hero.imagen} aspect="aspect-[4/3] lg:aspect-[4/5]" />
+        <Foto foto={hero.imagen} aspect="aspect-[4/3] lg:aspect-[4/5]" encuadre="object-[50%_30%]" prioridad />
       </div>
     </section>
   )

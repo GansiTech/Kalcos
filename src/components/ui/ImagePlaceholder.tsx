@@ -17,7 +17,7 @@ export default function ImagePlaceholder({ label, aspect = 'aspect-[4/3]', class
     >
       <div
         aria-hidden="true"
-        className="absolute inset-0 opacity-60 [background-image:repeating-linear-gradient(135deg,transparent_0_14px,rgb(216_204_184/0.45)_14px_15px)]"
+        className="absolute inset-0 opacity-60 [background-image:repeating-linear-gradient(135deg,transparent_0_14px,rgb(224_224_224/0.7)_14px_15px)]"
       />
       <div className="relative flex max-w-[80%] flex-col items-center gap-2 text-center text-sm text-ink-muted">
         <ImageIcon className="h-6 w-6" aria-hidden="true" />

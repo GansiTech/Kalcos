@@ -390,9 +390,9 @@ Los sitios de negocio son embudos de venta, no folletos. Cada sección debe acer
 - **URL:** https://kalcos.com.mx/ — idioma `es-MX`. Hosting LiteSpeed/cPanel, build estático.
 - **Stack:** el brief pide **TypeScript** (`.ts`/`.tsx`), así que aquí no aplica "JavaScript sin TypeScript" de la sección 1.
 - **Datos:** la fuente única es `src/data/empresa.ts` (en lugar de `content.js`); los textos de interfaz van en `src/data/contenido.ts`. Pendientes en `null`, mostrados en amarillo con `<Dato>`/`<Pendiente>`. `MODO_MAQUETA = false` hace fallar el build si falta un dato obligatorio (plugin en `vite.config.ts`).
-- **Tema:** claro. `base` papel cálido, `ink` tinta casi negra, `accent` naranja quemado `#B8420F`. Fuentes: Inter (cuerpo) y Archivo (títulos).
-- **Secciones:** `#inicio`, `#catalogo`, `#sucursales`, `#contacto`. Rutas: `/`, `/privacidad`, `/terminos` (+ 404).
+- **Tema:** claro, con los colores del logotipo: `base` blanco y grises neutros, `ink` tinta casi negra, `accent` rojo Kalcos `#CF0016`. Fuentes: Inter (cuerpo) y Archivo (títulos). Mientras no haya archivo del logo, `Logo.tsx` lo imita ("kalcos" blanco en cápsula roja).
+- **Secciones:** `#inicio`, `#catalogo`, `#sucursales`, `#contacto`. Rutas: `/`, `/privacidad`, `/terminos`, `/cookies` (+ 404).
 - **Prerender:** `npm run build` genera `dist/*.html` por ruta (`scripts/prerender.mjs` + `src/entry-server.tsx`). Al agregar una ruta, súmala a `rutas` en `entry-server.tsx`, a `seoRutas` y al sitemap.
 - **Reglas Meta:** razón social, RFC, domicilio fiscal y teléfono visibles en el pie de todas las páginas. El aviso de privacidad sin pop-ups ni animaciones que lo tapen. Páginas legales indexables (excepción a la sección 11, por decisión del brief).
-- **Sin analítica ni cookies**, por eso no hay `CookieBanner` ni `useScrollAnalytics`.
+- **Cookies:** `CookieBanner` en `Layout` + página `/cookies` (en español en vez de `/cookie-policy`). Consentimiento en `src/lib/consentimiento.ts` (`analiticaPermitida()`, `abrirPreferencias()`). Aún no hay analítica ni `useScrollAnalytics`; al agregarla, respetar el consentimiento y listar sus cookies en `cookiesUsadas` (`contenido.ts`).
 - **Brief original:** `Prompt_Claude_Code_Kalcos.md`. Node está en `/home/linuxbrew/.linuxbrew/bin`.

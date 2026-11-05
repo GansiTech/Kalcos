@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react'
 import { empresa, MODO_MAQUETA } from '../../data/empresa'
 import { catalogo } from '../../data/contenido'
 import { telHref, whatsappHref } from '../../lib/enlaces'
-import ImagePlaceholder from '../ui/ImagePlaceholder'
+import Foto from '../ui/Foto'
 import { Pendiente } from '../ui/Pendiente'
 import Reveal from '../ui/Reveal'
 import SectionTitle from '../ui/SectionTitle'
@@ -27,7 +27,8 @@ export default function Catalogo() {
               delay={(i % 3) * 0.08}
               className={`flex flex-col rounded-2xl border bg-base-800 p-4 ${cat.destacado ? 'border-accent ring-1 ring-accent' : 'border-base-700'}`}
             >
-              <ImagePlaceholder label={`Foto de calzado: ${cat.nombre}`} aspect="aspect-[4/3]" />
+              {/* 4:5 es la proporción de las fotos de producto; así no se corta el logo ni el producto */}
+              <Foto foto={cat.foto} aspect="aspect-[4/5]" />
               <div className="flex flex-1 flex-col px-2 pb-2 pt-5">
                 <h3 className="flex items-center gap-2 font-display text-xl font-extrabold text-ink">
                   {cat.nombre}

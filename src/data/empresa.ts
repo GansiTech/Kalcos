@@ -8,7 +8,7 @@
 
 // En `true` se muestra el banner de maqueta y los datos faltantes en amarillo.
 // En `false` se ocultan, y `npm run build` falla si falta algún dato obligatorio.
-export const MODO_MAQUETA: boolean = true
+export const MODO_MAQUETA: boolean = false
 
 export interface Sucursal {
   id: string
@@ -63,28 +63,30 @@ export const empresa: Empresa = {
   ciudad: 'Hermosillo',
   estado: 'Sonora',
   pais: 'México',
-  dominio: 'kalcos.com.mx',
-  sitioUrl: 'https://kalcos.com.mx',
-  telefonoPrincipal: '662 312 3233',
+  dominio: 'kalcos.net',
+  sitioUrl: 'https://kalcos.net',
+  telefonoPrincipal: '662 423 9089',
   facebook: 'https://www.facebook.com/kalcossolidaridadremate/',
 
-  razonSocial: null,
-  rfc: null,
-  domicilioFiscal: null,
-  correoContacto: null,
+  // Tomados de la Constancia de Situación Fiscal (SAT, 24/09/2026). Es persona física,
+  // así que la "razón social" es el nombre del contribuyente tal como aparece en la CSF.
+  razonSocial: 'CARLOS SALVADOR MADRIGAL MENDEZ',
+  rfc: 'MAMC711105LU4',
+  domicilioFiscal: 'Av. Morelia 60 B, Col. Hermosillo Centro, C.P. 83000, Hermosillo, Sonora',
+  correoContacto: 'redeskalcos@gmail.com',
   correoPrivacidad: null,
-  whatsapp: null,
-  instagram: null,
-  bolsaTrabajo: null,
-  horarioGeneral: null,
-  anioFundacion: null,
+  whatsapp: '662 423 9089',
+  instagram: 'kalcoszapateria',
+  bolsaTrabajo: '662 238 6687',
+  horarioGeneral: '9:00\u00a0a.\u00a0m. – 6:00\u00a0p.\u00a0m.', // \u00a0: que "a. m." no se parta en dos líneas
+  anioFundacion: 1999,
   politicaDevoluciones: null,
   logo: null,
   marcas: null,
 
   metaVerificacionDominio: null,
 
-  legalActualizado: '2026-10-26',
+  legalActualizado: '2026-11-03',
 }
 
 // Fuente: Google Maps y DENUE (INEGI)
@@ -98,18 +100,19 @@ export const sucursales: Sucursal[] = [
     telefono: '662 312 3233',
     lat: 29.13257,
     lng: -110.99293,
-    horario: null,
+    horario: 'Lun a sáb 9:00–20:00 · Dom 9:00–19:30',
   },
   {
-    id: 'solidaridad-remate',
-    nombre: 'Solidaridad Remate',
-    direccion: 'Blvd. Solidaridad esquina',
-    colonia: 'Col. Miguel Hidalgo',
-    cp: '83117',
-    telefono: '662 312 3233',
-    lat: 29.13209,
-    lng: -110.99278,
-    horario: null,
+    
+    id: 'karesh-guerrero',
+    nombre: 'Karesh Guerrero',
+    direccion: 'Calle Guerrero',
+    colonia: 'Centro',
+    cp: '83000',
+    telefono: '662 137 1155',
+    lat: 29.08038,
+    lng: -110.9535,
+    horario: 'Lun a vie 9:00–19:30 · Sáb 8:30–19:30 · Dom 8:30–17:00',
   },
   {
     id: 'progreso',
@@ -120,7 +123,7 @@ export const sucursales: Sucursal[] = [
     telefono: '662 311 5223',
     lat: 29.14252,
     lng: -111.01556,
-    horario: null,
+    horario: 'Lun a sáb 9:00–20:00 · Dom 9:00–19:30',
   },
   {
     id: 'karol-ley',
@@ -131,7 +134,7 @@ export const sucursales: Sucursal[] = [
     telefono: '662 690 7891',
     lat: 29.0961,
     lng: -110.99325,
-    horario: null,
+    horario: 'Lun a dom 9:00–20:00',
   },
   {
     id: 'morelia',
@@ -142,7 +145,7 @@ export const sucursales: Sucursal[] = [
     telefono: '662 213 1475',
     lat: 29.07937,
     lng: -110.95292,
-    horario: null,
+    horario: 'Lun a vie 9:00–19:30 · Sáb 8:30–19:30 · Dom 8:30–17:00',
   },
   {
     id: 'madrigal',
@@ -153,7 +156,7 @@ export const sucursales: Sucursal[] = [
     telefono: '662 158 8817',
     lat: 29.07934,
     lng: -110.95099,
-    horario: null,
+    horario: 'Lun a vie 9:00–19:30 · Sáb 8:30–19:30 · Dom 8:30–18:00',
   },
   {
     id: 'monterrey',
@@ -164,7 +167,7 @@ export const sucursales: Sucursal[] = [
     telefono: '662 158 8834',
     lat: 29.07873,
     lng: -110.95182,
-    horario: null,
+    horario: 'Lun a vie 9:00–19:30 · Sáb 8:30–19:30 · Dom 8:30–17:00',
   },
   {
     id: 'altares',
@@ -175,7 +178,7 @@ export const sucursales: Sucursal[] = [
     telefono: '662 310 5008',
     lat: 29.02338,
     lng: -110.94281,
-    horario: null,
+    horario: 'Lun a vie 9:30–20:00 · Sáb 8:30–19:30 · Dom 8:30–18:00',
   },
   {
     id: 'sunmall',
@@ -186,7 +189,7 @@ export const sucursales: Sucursal[] = [
     telefono: '662 145 2694',
     lat: 29.14613,
     lng: -110.99361,
-    horario: null,
+    horario: 'Lun a dom 10:00–21:00',
   },
 ]
 
