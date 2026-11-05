@@ -65,7 +65,7 @@ export const empresa: Empresa = {
   pais: 'México',
   dominio: 'kalcos.net',
   sitioUrl: 'https://kalcos.net',
-  telefonoPrincipal: '662 423 9089',
+  telefonoPrincipal: '662 238 6687',
   facebook: 'https://www.facebook.com/kalcossolidaridadremate/',
 
   // Tomados de la Constancia de Situación Fiscal (SAT, 24/09/2026). Es persona física,
@@ -75,7 +75,7 @@ export const empresa: Empresa = {
   domicilioFiscal: 'Av. Morelia 60 B, Col. Hermosillo Centro, C.P. 83000, Hermosillo, Sonora',
   correoContacto: 'redeskalcos@gmail.com',
   correoPrivacidad: null,
-  whatsapp: '662 423 9089',
+  whatsapp: '662 238 6687',
   instagram: 'kalcoszapateria',
   bolsaTrabajo: '662 238 6687',
   horarioGeneral: '9:00\u00a0a.\u00a0m. – 6:00\u00a0p.\u00a0m.', // \u00a0: que "a. m." no se parta en dos líneas
